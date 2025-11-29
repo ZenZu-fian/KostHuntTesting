@@ -12,6 +12,14 @@ RUN mkdir -p /usr/share/ant/lib && \
 COPY . /app
 WORKDIR /app
 
+# Download CopyLibs JAR to a specific location
+RUN mkdir -p /opt/netbeans/ant/extra && \
+    curl -L -o /opt/netbeans/ant/extra/org-netbeans-modules-java-j2seproject-copylibstask.jar \
+    https://repo1.maven.org/maven2/org/netbeans/external/org-netbeans-modules-java-j2seproject-copylibstask/8.2/org-netbeans-modules-java-j2seproject-copylibstask-8.2.jar
+
+# Build with the CopyLibs property set
+RUN ant -Dlibs.CopyLibs.classpath=/opt/netbeans/ant/extra/org-netbeans-modules-java-j2seproject-copylibstask.jar clean dist
+
 # Build the project into a WAR file
 RUN ant clean dist
 
@@ -26,3 +34,4 @@ ENV PORT=8080
 EXPOSE 8080
 
 CMD ["catalina.sh", "run"]
+
