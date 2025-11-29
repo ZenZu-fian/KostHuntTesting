@@ -3,6 +3,11 @@ FROM tomcat:9.0-jdk17
 # Install Ant to build Java project
 RUN apt-get update && apt-get install -y ant
 
+# Download CopyLibs JAR
+RUN mkdir -p /usr/share/ant/lib && \
+    curl -o /usr/share/ant/lib/org-netbeans-modules-java-j2seproject-copylibstask.jar \
+    https://repo1.maven.org/maven2/org/netbeans/external/org-netbeans-modules-java-j2seproject-copylibstask/8.2/org-netbeans-modules-java-j2seproject-copylibstask-8.2.jar
+
 # Copy project files into container
 COPY . /app
 WORKDIR /app
