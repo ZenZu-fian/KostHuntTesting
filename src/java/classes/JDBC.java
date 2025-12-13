@@ -17,22 +17,24 @@ public class JDBC {
     private String message;
     
     public void connect() {
-        String dbname = "dbkost";  // Database name
-        String username = "root";          // MySQL username
-        String password = "";              // MySQL password
+    String dbname = "railway";  // Changed from "dbkost" to "railway"
+    String host = "tramway.proxy.rlwy.net";  // Railway host
+    String port = "34370";  // Railway port
+    String username = "root";
+    String password = "YOUR_RAILWAY_PASSWORD_HERE";  // Get this from Railway Variables tab
 
-        try {
-            // Load MySQL JDBC Driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Establish connection to MySQL database
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + dbname, username, password);
-            stmt = con.createStatement();
-            isConnected = true;
-            message = "DB connected";
-        } catch (Exception e) {
-            isConnected = false;
-            message = e.getMessage();
+    try {
+        // Load MySQL JDBC Driver
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        
+        // Establish connection to Railway MySQL database
+        con = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + dbname, username, password);
+        stmt = con.createStatement();
+        isConnected = true;
+        message = "DB connected";
+    } catch (Exception e) {
+        isConnected = false;
+        message = e.getMessage();
         }
     }
 
@@ -82,3 +84,4 @@ public class JDBC {
         return rs;
     }
 }
+
