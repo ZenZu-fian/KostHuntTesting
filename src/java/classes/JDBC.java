@@ -21,7 +21,7 @@ public class JDBC {
     String host = "tramway.proxy.rlwy.net";  // Railway host
     String port = "34370";  // Railway port
     String username = "root";
-    String password = "YOUR_RAILWAY_PASSWORD_HERE";  // Get this from Railway Variables tab
+    String password = "hBrFaKVuMmbnKhOqleiIZnNNnCYxcndK";  // Get this from Railway Variables tab
 
     try {
         // Load MySQL JDBC Driver
@@ -84,4 +84,5 @@ public class JDBC {
         return rs;
     }
 }
+
 
