@@ -18,8 +18,8 @@ public class JDBC {
     
     public void connect() {
     String dbname = "railway";  // Changed from "dbkost" to "railway"
-    String host = "tramway.proxy.rlwy.net";  // Railway host
-    String port = "34370";  // Railway port
+    String host = "mysql.railway.internal";  // Railway host
+    String port = "3306";  // Railway port
     String username = "root";
     String password = "hBrFaKVuMmbnKhOqleiIZnNNnCYxcndK";  // Get this from Railway Variables tab
 
@@ -84,5 +84,6 @@ public class JDBC {
         return rs;
     }
 }
+
 
 
